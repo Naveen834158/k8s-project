@@ -76,6 +76,9 @@ SETUP JENKINS
 INSTALL GIT 
 INSTALL TRIVY 
 
+
+
+
  steps to install trivy:
 wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.tar.gz
 tar zxvf trivy_0.18.3_Linux-64bit.tar.gz
@@ -84,14 +87,21 @@ Vim .bashrc
 export PATH=$PATH:/usr/local/bin/
 source .bashrc  
 
+
+
+
 INSTALL DOCKER AND GIVE PERMISSIONS TO /VAR/RUN/DOCKER.SOCK
 CREATE A SONAR CONTAINER USING DOCKER  AND CONNECT TO SONARQUBE (docker run -d --name sonar -p 9000:9000 sonarqube:lts-community) 
 INSTALL THESE FOLLOWING PLUGINS (Eclipse Temurin Installer, SonarQube Scanner, NodeJs Plugin)
 
-Configure Java and Nodejs in Global Tool Configuration
 
+
+Configure Java and Nodejs in Global Tool Configuration
 JDK NAME = jdk17 (jdk-17.0.8.1+1)  
 NODE NAME = node16 (NodeJs 16.2.0)
+
+
+
 
 Configure Sonar Server in Manage Jenkins
 CREATE A USER IN SONAR AND GENEARATE A TOKEN FOR THAT USER 
@@ -209,10 +219,17 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 helm version
 
+
+
+
+
 INSTALL ARGO CD USING HELM
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl get all -n argocd
+
+
+
 
 
 
@@ -225,6 +242,10 @@ kubectl get svc argocd-server -n argocd -o json | jq --raw-output .status.loadBa
 The above command will provide load balancer URL to access ARGO CD
 
 
+
+
+
+
 TO GET ARGO CD PASSWORD:
 export ARGO_PWD='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d'
 echo $ARGO_PWD
@@ -232,8 +253,14 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 The above command to provide password to access argo cd
 
 
+
+
 CREATE APP AND FORCE IT 
 SETUP MONOTORING
+
+
+
+
 
 
 
